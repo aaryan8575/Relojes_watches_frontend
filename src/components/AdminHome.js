@@ -19,26 +19,26 @@ export default function AdminHome() {
       })
   ]
 
-  const deleteUser = (id , name) => {
-    if(window.confirm(`Are you sure want to delete User : ${name} ?`)){
+  const deleteUser = (id, name, userType) => {
+    if (window.confirm(`Are you sure want to delete ${userType} : ${name} ?`)) {
       fetch("http://localhost:4000/deleteUser", {
-      method: "POST",
-      crossDomain: true,
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        "Access-Control-Allow-Origin": "*",
-      },
-      body: JSON.stringify({
-        userID : id,
-      }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        alert(data.data);
-        getAllUser();
-      });
-    }else {
+        method: "POST",
+        crossDomain: true,
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+        body: JSON.stringify({
+          userID: id,
+        }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          alert(data.data);
+          getAllUser();
+        });
+    } else {
 
     }
   };
@@ -92,7 +92,7 @@ export default function AdminHome() {
                   <h5>
                     <FontAwesomeIcon
                       icon={faTrash}
-                      onClick={() => deleteUser(i._id, i.fname)}
+                      onClick={() => deleteUser(i._id, i.fname, i.userType)}
                     />
                   </h5>
                 </td>
