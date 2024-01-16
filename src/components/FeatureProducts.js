@@ -15,7 +15,7 @@ const FeatureProduct = () => {
         <div className="intro-data">Check Now!</div>
         <div className="common-heading">Our Featured Watches</div>
         <div className="grid grid-three-column">
-          {featureProducts.map((curElem) => {
+          {featureProducts.slice(0, 6).map((curElem) => {
             return <Product key={curElem._id} {...curElem} />;
           })}
         </div>
